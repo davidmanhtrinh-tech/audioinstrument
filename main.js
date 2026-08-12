@@ -1,9 +1,9 @@
 //Browser loads the HTML page - Browser then loads the JS - Open the dialogue - User interacts and closes the dialogue - Audio system loads - User clicks sound button//
-//Find our dialogue
+//Find our dialogue//
 const introDialog = document.getElementById("intro-dialogue");
 //Locating the close button
 const introCloseButton = document.getElementById("intro-dialog-close");
-//Show the found element in our browser modals
+//Show the found element in our browser modals//
 //console.log(introDialog);
 //Find our test button//
 const testButton = document.getElementById("test-button");
@@ -11,11 +11,22 @@ const testButton = document.getElementById("test-button");
 //init our synth//
 const synth = new Tone.Synth().toDestination();
 
-//Dialog logic
+//Dialog logic//
 introDialog.showModal();
 introCloseButton.addEventListener("click", function closeIntroDialog() {
   introDialog.close();
+  toneInit();
 });
+
+//whenever dialog closes, initialise the audio system
+introDialog.addEventListener("close", toneInit);
+//we put the whole function inside the event listener instead as its only called there//
+
+//Tone//
+//Run to setup our audio systems//
+function toneInit() {
+  synth.connect(Tone.destination);
+}
 
 // do something when this button is clicked//
 testButton.addEventListener("click", playNote);
