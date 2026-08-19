@@ -36,3 +36,11 @@ dialog[open] {
   align-items: center;
   text-align: center;
 }
+
+#key-test {
+  cursor: pointer;
+}
+
+#key-test:active {
+  background-color: red;
+}
