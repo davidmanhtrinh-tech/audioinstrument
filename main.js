@@ -81,3 +81,17 @@ key.addEventListener("mouseenter", function (e) {
 
 //key.addEventListener("click", playNoteD);
 //testButton.addEventListener("click", playDataNoteD);
+
+//finding the string monster
+const onnMonster = document.getElementById("onn-monster");
+
+let monsterDragging = false;
+
+let monsterOffsetX = 0;
+let monsterOffsetY = 0;
+
+//dragging component
+
+onnMonster.addEventListener("pointerdown", function (e) {
+  monsterDragging = true;
+});

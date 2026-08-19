@@ -44,3 +44,18 @@ dialog[open] {
 #key-test:active {
   background-color: red;
 }
+
+#Onn-Monster {
+  position: absolute;
+  position: left 300px;
+
+  width: 200px;
+  height: auto;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+#Onn-monster:active {
+  cursor: grabbing;
+}
