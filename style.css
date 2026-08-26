@@ -64,3 +64,18 @@ img {
   margin: 1rem;
   position: relative;
 }
+
+.monster-stage {
+  position: relative;
+}
+
+.monster {
+  position: absolute;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.monster:active {
+  cursor: grabbing;
+}

@@ -1,3 +1,5 @@
+const monsters = document.querySelectorAll(".monster");
+
 monsters.forEach((monster) => {
   let isDragging = false;
 
@@ -31,6 +33,7 @@ monsters.forEach((monster) => {
     monster.style.top = `${newY}px`;
 
     monster.style.bottom = "auto";
+    monster.style.right = "auto";
   });
 
   monster.addEventListener("pointerup", (event) => {
@@ -43,6 +46,11 @@ monsters.forEach((monster) => {
 
   monster.addEventListener("pointercancel", () => {
     isDragging = false;
+
     monster.style.zIndex = "10";
+  });
+
+  monster.addEventListener("dragstart", (event) => {
+    event.preventDefault();
   });
 });
