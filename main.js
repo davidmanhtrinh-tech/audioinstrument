@@ -95,3 +95,21 @@ let monsterOffsetY = 0;
 onnMonster.addEventListener("pointerdown", function (e) {
   monsterDragging = true;
 });
+
+//when i click the button, i want to play audio file
+const playButton = document.getElementById("play-button");
+const audioTrack = document.getElementById("audio-track");
+
+
+function playAudio(){
+  if(audioTrack.paused ===){
+    audioTrack.play();
+
+  } else {
+    audioTrack.onpause();
+  }
+
+}
+
+playButton.addEventListener("click", playAudio);
+
