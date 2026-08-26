@@ -59,3 +59,8 @@ dialog[open] {
 #Onn-monster:active {
   cursor: grabbing;
 }
+
+img {
+  margin: 1rem;
+  position: relative;
+}

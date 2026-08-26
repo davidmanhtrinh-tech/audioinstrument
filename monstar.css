@@ -10,24 +10,20 @@ body {
   height: 100%;
   overflow: hidden;
 }
-
-/* BACKGROUND */
-
+/*Monster Stage - design template avaliable in Figma*/
 .monster-stage {
   position: relative;
 
   width: 100vw;
   height: 100vh;
 
-  background-image: url("Monster Orchestra.png");
+  background-color: rgb(255, 87, 115);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   overflow: hidden;
 }
-
-/* TITLE */
 
 header {
   position: absolute;
@@ -43,8 +39,6 @@ header h1 {
 
   color: white;
 }
-
-/* ALL MONSTERS */
 
 .monster {
   position: absolute;
@@ -65,9 +59,7 @@ header h1 {
   cursor: grabbing;
 }
 
-/* STARTING POSITIONS */
-
-/* BLUE MONSTER */
+/* Starting positions */
 
 .guitar {
   width: 15%;
@@ -76,16 +68,12 @@ header h1 {
   top: 47%;
 }
 
-/* PURPLE MONSTER */
-
 .duckler {
   width: 13%;
 
   left: 24%;
   top: 46%;
 }
-
-/* BUNNY */
 
 .bunny {
   width: 13%;
@@ -94,16 +82,12 @@ header h1 {
   top: 25%;
 }
 
-/* RED MONSTER */
-
 .drummer {
   width: 17%;
 
   left: 62%;
   top: 48%;
 }
-
-/* MONKEY */
 
 .monking {
   width: 13%;
@@ -125,7 +109,7 @@ header h1 {
   /* default idle animation */
   animation: monsterSquish 1.4s ease-in-out infinite;
 
-  /* makes the squish happen from the feet */
+  /* makes the squish happen from the foots position */
   transform-origin: bottom center;
 }
 

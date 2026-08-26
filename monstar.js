@@ -1,5 +1,3 @@
-const monsters = document.querySelectorAll(".monster");
-
 monsters.forEach((monster) => {
   let isDragging = false;
 
