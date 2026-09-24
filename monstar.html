@@ -17,11 +17,28 @@
 
     <main>
       <section class="monster-stage">
+
+        <!-- Musical activation zones -->
+        <div class="activation-zone slow-zone" data-speed="0.7">
+          <span class="zone-label">SLOW</span>
+        </div>
+
+        <div class="activation-zone normal-zone" data-speed="1">
+          <span class="zone-label">NORMAL</span>
+        </div>
+
+        <div class="activation-zone fast-zone" data-speed="1.35">
+          <span class="zone-label">FAST</span>
+        </div>
+
+        <!-- Monstars -->
+
         <img
           class="monster bunny"
           src="Bunny.svg"
           alt="Bunny singer"
           draggable="false"
+          data-sound="assets/audio/bibi.mp3"
         />
 
         <img
@@ -29,6 +46,7 @@
           src="Drummer.svg"
           alt="Drummer"
           draggable="false"
+          data-sound="assets/audio/surge.mp3"
         />
 
         <img
@@ -36,6 +54,7 @@
           src="Duckler.svg"
           alt="Duckler"
           draggable="false"
+          data-sound="assets/audio/mr.p.mp3"
         />
 
         <img
@@ -43,6 +62,7 @@
           src="Guitar Monster.svg"
           alt="Guitar Monster"
           draggable="false"
+          data-sound="assets/audio/sirus.mp3"
         />
 
         <img
@@ -50,7 +70,9 @@
           src="Monking.svg"
           alt="Monking"
           draggable="false"
+          data-sound="assets/audio/mico.mp3"
         />
+
       </section>
     </main>
   </body>
