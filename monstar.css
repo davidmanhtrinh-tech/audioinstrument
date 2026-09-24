@@ -9,14 +9,15 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  body {
+}
+
+body {
   background: linear-gradient(
     180deg,
     #5c19bf 0%,
     #4839b6 58%,
     #337ac3 100%
   );
-}
 }
 
 /* Monster Stage - design template available in Figma */
@@ -25,8 +26,6 @@ body {
 
   width: 100vw;
   height: 100vh;
-
-
 
   /* Figma performance-stage background */
   background-image: url("Monster Orchestra Background.png");
@@ -52,9 +51,9 @@ header h1 {
   color: white;
 }
 
-.monster {
-transform: scale(0.75);
+/* Monstars */
 
+.monster {
   position: absolute;
 
   height: auto;
@@ -67,6 +66,12 @@ transform: scale(0.75);
   -webkit-user-drag: none;
 
   z-index: 10;
+
+  /* Monstars are completely still by default */
+  transform: scale(1);
+
+  /* makes the animation happen from the feet */
+  transform-origin: bottom center;
 }
 
 .monster:active {
@@ -110,21 +115,11 @@ transform: scale(0.75);
   top: 51%;
 }
 
-.monster {
-  position: absolute;
-  height: auto;
+/* Only animate a Monstar while its music is playing */
 
-  cursor: grab;
-  user-select: none;
-  -webkit-user-drag: none;
-
-  z-index: 10;
-
-  /* default idle animation */
+.monster.playing {
   animation: monsterSquish 1.4s ease-in-out infinite;
-
-  /* makes the squish happen from the foots position */
-  transform-origin: bottom center;
+  
 }
 
 @keyframes monsterSquish {
