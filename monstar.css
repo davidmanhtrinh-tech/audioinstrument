@@ -10,7 +10,9 @@ body {
   height: 100%;
   overflow: hidden;
 }
-/*Monster Stage - design template avaliable in Figma*/
+
+/* Monster Stage - design template available in Figma */
+
 .monster-stage {
   position: relative;
 
@@ -53,6 +55,10 @@ header h1 {
   -webkit-user-drag: none;
 
   z-index: 10;
+
+  transform-origin: bottom center;
+
+  touch-action: none;
 }
 
 .monster:active {
@@ -96,21 +102,10 @@ header h1 {
   top: 51%;
 }
 
-.monster {
-  position: absolute;
-  height: auto;
+/* Only animate while playing */
 
-  cursor: grab;
-  user-select: none;
-  -webkit-user-drag: none;
-
-  z-index: 10;
-
-  /* default idle animation */
+.monster.playing {
   animation: monsterSquish 1.4s ease-in-out infinite;
-
-  /* makes the squish happen from the foots position */
-  transform-origin: bottom center;
 }
 
 @keyframes monsterSquish {
