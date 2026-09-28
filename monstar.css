@@ -27,11 +27,6 @@ body {
   width: 100vw;
   height: 100vh;
 
-  /* Figma performance-stage background */
-  background-image: url("Monster Orchestra Background.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 
   overflow: hidden;
 }
