@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*Monster Stage - design template avaliable in Figma*/
+
+.monster-stage {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgb(255, 87, 115);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+
+  top: 25px;
+  left: 30px;
+
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+
+  color: white;
+}
+
+.monster {
+  position: absolute;
+
+  height: auto;
+
+  cursor: grab;
+
+  user-select: none;
+
+  /* this prevents browser image dragging */
+  -webkit-user-drag: none;
+
+  z-index: 10;
+
+  /* makes the movement happen from the Monstars foots position */
+  transform-origin: bottom center;
+
+  touch-action: none;
+}
+
+.monster:active {
+  cursor: grabbing;
+}
+
+/* Starting positions */
+
+.guitar {
+  width: 15%;
+
+  left: 8%;
+  top: 47%;
+}
+
+.duckler {
+  width: 13%;
+
+  left: 24%;
+  top: 46%;
+}
+
+.bunny {
+  width: 13%;
+
+  left: 44%;
+  top: 25%;
+}
+
+.drummer {
+  width: 17%;
+
+  left: 62%;
+  top: 48%;
+}
+
+.monking {
+  width: 13%;
+
+  left: 80%;
+  top: 51%;
+}
+
+/* the Monstar moves when its beat happens */
+
+.monster.beat {
+  animation: monsterBeat 0.25s ease-out;
+}
+
+@keyframes monsterBeat {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+
+  40% {
+    transform: scaleX(1.08) scaleY(0.92);
+  }
+
+  70% {
+    transform: scaleX(0.97) scaleY(1.05);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}

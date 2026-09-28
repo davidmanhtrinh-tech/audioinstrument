@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    #5c19bf 0%,
+    #4839b6 58%,
+    #337ac3 100%
+  );
+}
+
+/* Monster Stage - design template available in Figma */
+.monster-stage {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+
+  overflow: hidden;
+}
+
+header {
+  position: absolute;
+
+  top: 25px;
+  left: 30px;
+
+  z-index: 100;
+}
+
+header h1 {
+  margin: 0;
+
+  color: white;
+}
+
+/* Monstars */
+
+.monster {
+  position: absolute;
+
+  height: auto;
+
+  cursor: grab;
+
+  user-select: none;
+
+  /* prevents browser image dragging */
+  -webkit-user-drag: none;
+
+  z-index: 10;
+
+  /* Monstars are completely still by default */
+  transform: scale(1);
+
+  /* makes the animation happen from the feet */
+  transform-origin: bottom center;
+}
+
+.monster:active {
+  cursor: grabbing;
+}
+
+/* Starting positions - aligned with the Figma podiums */
+
+.guitar {
+  width: 15%;
+
+  left: 8%;
+  top: 47%;
+}
+
+.duckler {
+  width: 13%;
+
+  left: 24%;
+  top: 46%;
+}
+
+.bunny {
+  width: 13%;
+
+  left: 44%;
+  top: 25%;
+}
+
+.drummer {
+  width: 17%;
+
+  left: 62%;
+  top: 48%;
+}
+
+.monking {
+  width: 13%;
+
+  left: 80%;
+  top: 51%;
+}
+
+/* Only animate a Monstar while its music is playing */
+
+.monster.playing {
+  animation: monsterSquish 1.4s ease-in-out infinite;
+  
+}
+
+@keyframes monsterSquish {
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+
+  25% {
+    transform: scaleX(1.04) scaleY(0.96);
+  }
+
+  50% {
+    transform: scaleX(0.98) scaleY(1.03);
+  }
+
+  75% {
+    transform: scaleX(1.03) scaleY(0.97);
+  }
+
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
+}
