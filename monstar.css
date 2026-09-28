@@ -19,14 +19,15 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: rgb(255, 87, 115);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    180deg,
+    #5c19bf 0%,
+    #4839b6 58%,
+    #337ac3 100%
+  );
 
   overflow: hidden;
 }
-
 header {
   position: absolute;
 
