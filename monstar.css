@@ -10,7 +10,9 @@ body {
   height: 100%;
   overflow: hidden;
 }
-/*Monster Stage - design template avaliable in Figma*/
+
+/* Monster Stage - design template avaliable in Figma */
+
 .monster-stage {
   position: relative;
 
@@ -49,10 +51,15 @@ header h1 {
 
   user-select: none;
 
-  /* prevents browser image dragging */
+  /* prevents the browser image from dragging */
   -webkit-user-drag: none;
 
   z-index: 10;
+
+  /* this makes the animation happen from the Monstars feet */
+  transform-origin: bottom center;
+
+  touch-action: none;
 }
 
 .monster:active {
@@ -96,21 +103,30 @@ header h1 {
   top: 51%;
 }
 
-.monster {
-  position: absolute;
-  height: auto;
+/* waiting for the next bar */
 
-  cursor: grab;
-  user-select: none;
-  -webkit-user-drag: none;
+.monster.queued {
+  animation: monsterWaiting 0.6s ease-in-out infinite;
+}
 
-  z-index: 10;
+@keyframes monsterWaiting {
+  0% {
+    transform: scale(1);
+  }
 
-  /* default idle animation */
+  50% {
+    transform: scale(1.03);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* allows the sound to be played  */
+
+.monster.playing {
   animation: monsterSquish 1.4s ease-in-out infinite;
-
-  /* makes the squish happen from the foots position */
-  transform-origin: bottom center;
 }
 
 @keyframes monsterSquish {
