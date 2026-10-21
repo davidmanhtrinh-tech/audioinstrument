@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -10,6 +11,7 @@ body {
   height: 100%;
   overflow: hidden;
 }
+
 /* Monster Stage - design template available in Figma */
 .monster-stage {
   position: relative;
@@ -17,15 +19,19 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: rgb(255, 87, 115);
+  /* Figma purple-to-blue background */
+  background-color: #6919c5;
+  background-image:
+    url("Monster Orchestra.svg"),
+    linear-gradient(180deg, #6919c5 0%, #357bd0 100%);
 
-  background-image: url("Monster Orchestra.svg");
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-size: 100% 100%, 100% 100%;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
 
   overflow: hidden;
 }
+
 header {
   position: absolute;
 
@@ -52,6 +58,7 @@ header h1 {
 
   /* prevents browser image dragging */
   -webkit-user-drag: none;
+  touch-action: none;
 
   z-index: 10;
 }
@@ -104,6 +111,7 @@ header h1 {
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
+  touch-action: none;
 
   z-index: 10;
 
@@ -141,29 +149,115 @@ header h1 {
 .guitar {
   width: 10%;
   left: 8%;
-  top: 47%;
+  top: auto;
+  bottom: 5%;
 }
 
 .duckler {
   width: 9%;
   left: 24%;
-  top: 46%;
+  top: auto;
+  bottom: 5%;
 }
 
 .bunny {
   width: 9%;
   left: 44%;
-  top: 25%;
+  top: auto;
+  bottom: 5%;
 }
 
 .drummer {
   width: 12%;
   left: 62%;
-  top: 48%;
+  top: auto;
+  bottom: 5%;
 }
 
 .monking {
   width: 9%;
   left: 80%;
-  top: 51%;
+  top: auto;
+  bottom: 5%;
+}
+
+/* Monstars are darkened before they join the orchestra */
+.monster.inactive {
+  filter: brightness(0.35);
+  animation: none;
+}
+
+/* Monstars return to their original colours when playing */
+.monster.active {
+  filter: brightness(1);
+  animation: monsterSquish 1.4s ease-in-out infinite;
+}
+
+/* paused Monstars stay on the stage */
+.monster.paused {
+  filter: brightness(0.55);
+  animation: none;
+}
+
+/* bottom step has a gentle animation */
+.monster.active[data-step="bottom"] {
+  animation-duration: 2s;
+}
+
+/* middle step has the normal animation */
+.monster.active[data-step="middle"] {
+  animation-duration: 1.4s;
+}
+
+/* top step has a faster animation */
+.monster.active[data-step="top"] {
+  animation-duration: 0.8s;
+}
+
+/* reduces animation for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .monster {
+    animation: none !important;
+    transition: none;
+  }
+}
+
+/* Three performance steps */
+
+.performance-steps {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.performance-step {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 10%;
+
+  background-color: #f6d56b;
+  border: 3px solid #c79d41;
+  border-radius: 12px;
+}
+
+/* Three-step performance stage */
+.performance-stairs {
+  position: absolute;
+
+  left: 0;
+  bottom: -20%;
+  top: auto;
+
+  width: 100%;
+  height: 85%;
+
+  object-fit: fill;
+
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  z-index: 1;
 }
