@@ -13,13 +13,42 @@
 
   <body>
 
+    <!-- Initial welcome popup -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+      <section
+        class="welcome-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="welcomeTitle"
+        aria-describedby="welcomeInstructions"
+      >
+        <h1 id="welcomeTitle" class="welcome-title">
+          <span>M</span><span>O</span><span>N</span><span>S</span><span>T</span><span>A</span><span>R</span><span>S</span>
+        </h1>
+
+        <div class="welcome-instructions" id="welcomeInstructions">
+          <p>MEET YOUR NEW MUSICAL FRIENDS!</p>
+
+          <p>DRAG A MONSTER ONTO THE YELLOW STAGE TO HEAR THEM PLAY.</p>
+
+          <p>MOVE THEM UP OR DOWN TO CHANGE HOW LOUD THEY SOUND!</p>
+
+          <p>READY TO MAKE YOUR OWN MONSTER BAND?</p>
+        </div>
+
+        <button class="play-button" id="playButton" type="button">
+          PLAY
+        </button>
+      </section>
+    </div>
+
     <main>
       <section class="monster-stage">
 
         <!-- Three-step performance stage -->
         <img
           class="performance-stairs"
-          src="Stairs.svg"
+          src="Stairs 2.svg"
           alt=""
           draggable="false"
         />
@@ -54,8 +83,8 @@
         <!-- Guitar Monster sound -->
         <img
           class="monster guitar"
-          src="Guitar Monster.svg"
-          alt="Guitar Monster"
+          src="Guitar.svg"
+          alt="Guitar"
           draggable="false"
           data-sound="assets/audio/sirus.mp3"
         />

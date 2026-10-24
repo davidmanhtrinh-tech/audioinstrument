@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
 * {
   box-sizing: border-box;
 }
@@ -260,4 +262,142 @@ header h1 {
   -webkit-user-drag: none;
 
   z-index: 1;
+}
+
+/* Initial welcome popup */
+
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  background: rgba(20, 10, 45, 0.55);
+}
+
+.welcome-overlay.hidden {
+  display: none;
+}
+
+.welcome-popup {
+  width: min(665px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+
+  padding: 42px 28px 35px;
+
+  background: #ffe572;
+  border: 3px solid #259cff;
+  border-radius: 14px;
+
+  text-align: center;
+
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-title {
+  margin: 0 0 35px;
+
+  font-family: 'Luckiest Guy', cursive;
+  font-size: clamp(25px, 4vw, 40px);
+  font-weight: 400;
+  letter-spacing: -3px;
+}
+
+.welcome-title span:nth-child(1) { color: #ff7469; }
+.welcome-title span:nth-child(2) { color: #81c8b0; }
+.welcome-title span:nth-child(3) { color: #c88bd9; }
+.welcome-title span:nth-child(4) { color: #a5d96c; }
+.welcome-title span:nth-child(5) { color: #ffc75c; }
+.welcome-title span:nth-child(6) { color: #ef9072; }
+.welcome-title span:nth-child(7) { color: #d4a0b6; }
+.welcome-title span:nth-child(8) { color: #9e92d6; }
+
+.welcome-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  margin-bottom: 34px;
+}
+
+.welcome-instructions p {
+  margin: 0;
+
+  color: #B28B0D;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: clamp(12px, 1.4vw, 24px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+.play-button {
+  width: 195px;
+  max-width: 100%;
+  min-height: 60px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #20dc36;
+  color: #087d20;
+
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 28px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 0 rgba(0, 130, 20, 0.25);
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.play-button:hover {
+  background: #ff9f43;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.play-button:active {
+  transform: translateY(2px);
+}
+
+.play-button:focus-visible {
+  outline: 3px solid #126ed0;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .welcome-popup {
+    padding: 30px 16px;
+  }
+
+  .welcome-instructions {
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+
+  .welcome-title {
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+  }
+
+  .play-button {
+    min-height: 54px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .play-button {
+    transition: none;
+  }
 }
