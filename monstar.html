@@ -45,10 +45,30 @@
     <main>
       <section class="monster-stage">
 
+        <!-- Global playback controls -->
+        <div class="stage-controls" aria-label="Monstars playback controls">
+          <button
+            class="stage-control-button pause-all-button"
+            id="pauseAllButton"
+            type="button"
+            aria-pressed="false"
+          >
+            PAUSE ALL
+          </button>
+
+          <button
+            class="stage-control-button reset-button"
+            id="resetButton"
+            type="button"
+          >
+            RESET
+          </button>
+        </div>
+
         <!-- Three-step performance stage -->
         <img
           class="performance-stairs"
-          src="Stairs 2.svg"
+          src="Stairs.svg"
           alt=""
           draggable="false"
         />
@@ -59,7 +79,7 @@
           src="Bunny.svg"
           alt="Bunny singer"
           draggable="false"
-          data-sound="assets/audio/bibi.mp3"
+          data-sound="assets/audio/vocals.wav"
         />
 
         <!-- Drummer sound -->
@@ -68,7 +88,7 @@
           src="Drummer.svg"
           alt="Drummer"
           draggable="false"
-          data-sound="assets/audio/surge.mp3"
+          data-sound="assets/audio/drums.wav"
         />
 
         <!-- Duckler sound -->
@@ -77,7 +97,7 @@
           src="Duckler.svg"
           alt="Duckler"
           draggable="false"
-          data-sound="assets/audio/mr.p.mp3"
+          data-sound="assets/audio/mr.p.wav"
         />
 
         <!-- Guitar Monster sound -->
@@ -86,7 +106,7 @@
           src="Guitar.svg"
           alt="Guitar"
           draggable="false"
-          data-sound="assets/audio/sirus.mp3"
+          data-sound="assets/audio/guitar.mp3"
         />
 
         <!-- Monking sound -->
@@ -95,7 +115,7 @@
           src="Monking.svg"
           alt="Monking"
           draggable="false"
-          data-sound="assets/audio/mico.mp3"
+          data-sound="assets/audio/violin.wav"
         />
 
       </section>
