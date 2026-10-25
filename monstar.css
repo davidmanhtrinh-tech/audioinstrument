@@ -1,244 +1,129 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
 
 /* Monster Stage - design template available in Figma */
 .monster-stage {
   position: relative;
-
   width: 100vw;
   height: 100vh;
-
-  /* Figma purple-to-blue background */
   background-color: #6919c5;
-  background-image:
-    url("Monster Orchestra.svg"),
-    linear-gradient(180deg, #6919c5 0%, #357bd0 100%);
-
+  background-image: url("Monster Orchestra.svg"), linear-gradient(180deg, #6919c5 0%, #357bd0 100%);
   background-size: 100% 100%, 100% 100%;
   background-position: center, center;
   background-repeat: no-repeat, no-repeat;
-
   overflow: hidden;
 }
-
-header {
-  position: absolute;
-
-  top: 25px;
-  left: 30px;
-
-  z-index: 100;
-}
-
-header h1 {
-  margin: 0;
-
-  color: white;
-}
-
-.monster {
-  position: absolute;
-
-  height: auto;
-
-  cursor: grab;
-
-  user-select: none;
-
-  /* prevents browser image dragging */
-  -webkit-user-drag: none;
-  touch-action: none;
-
-  z-index: 10;
-}
-
-.monster:active {
-  cursor: grabbing;
-}
-
-/* Starting positions */
-
-.guitar {
-  width: 15%;
-
-  left: 8%;
-  top: 47%;
-}
-
-.duckler {
-  width: 13%;
-
-  left: 24%;
-  top: 46%;
-}
-
-.bunny {
-  width: 13%;
-
-  left: 44%;
-  top: 25%;
-}
-
-.drummer {
-  width: 17%;
-
-  left: 62%;
-  top: 48%;
-}
-
-.monking {
-  width: 13%;
-
-  left: 80%;
-  top: 51%;
-}
+header { position: absolute; top: 25px; left: 30px; z-index: 100; }
+header h1 { margin: 0; color: white; }
 
 .monster {
   position: absolute;
   height: auto;
-
   cursor: grab;
   user-select: none;
   -webkit-user-drag: none;
   touch-action: none;
-
   z-index: 10;
+}
+.monster:active { cursor: grabbing; }
 
-  /* default idle animation */
+/* Starting positions (original Figma values retained) */
+.guitar { width: 15%; left: 8%; top: 47%; }
+.duckler { width: 13%; left: 24%; top: 46%; }
+.bunny { width: 13%; left: 44%; top: 25%; }
+.drummer { width: 17%; left: 62%; top: 48%; }
+.monking { width: 13%; left: 80%; top: 51%; }
+
+.monster {
+  position: absolute;
+  height: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+  z-index: 10;
+  /* Idle animation, overridden by the active character's beat-driven movement */
   animation: monsterSquish 1.4s ease-in-out infinite;
-
-  /* makes the squish happen from the foots position */
   transform-origin: bottom center;
 }
 
 @keyframes monsterSquish {
-  0% {
-    transform: scaleX(1) scaleY(1);
-  }
-
-  25% {
-    transform: scaleX(1.04) scaleY(0.96);
-  }
-
-  50% {
-    transform: scaleX(0.98) scaleY(1.03);
-  }
-
-  75% {
-    transform: scaleX(1.03) scaleY(0.97);
-  }
-
-  100% {
-    transform: scaleX(1) scaleY(1);
-  }
+  0% { transform: scaleX(1) scaleY(1); }
+  25% { transform: scaleX(1.04) scaleY(0.96); }
+  50% { transform: scaleX(0.98) scaleY(1.03); }
+  75% { transform: scaleX(1.03) scaleY(0.97); }
+  100% { transform: scaleX(1) scaleY(1); }
 }
 
 /* Starting positions */
-
-.guitar {
-  width: 10%;
-  left: 8%;
-  top: auto;
-  bottom: 5%;
-}
-
-.duckler {
-  width: 9%;
-  left: 24%;
-  top: auto;
-  bottom: 5%;
-}
-
-.bunny {
-  width: 9%;
-  left: 44%;
-  top: auto;
-  bottom: 5%;
-}
-
-.drummer {
-  width: 12%;
-  left: 62%;
-  top: auto;
-  bottom: 5%;
-}
-
-.monking {
-  width: 9%;
-  left: 80%;
-  top: auto;
-  bottom: 5%;
-}
+.guitar { width: 10%; left: 8%; top: auto; bottom: 3%; }
+.duckler { width: 9%; left: 24%; top: auto; bottom: 2.5%; }
+.bunny { width: 9%; left: 44%; top: auto; bottom: 5%; }
+.drummer { width: 12%; left: 62%; top: auto; bottom: 5%; }
+.monking { width: 9%; left: 80%; top: auto; bottom: 5%; }
 
 /* Monstars are darkened before they join the orchestra */
-.monster.inactive {
-  filter: brightness(0.35);
-  animation: none;
-}
+.monster.inactive { filter: brightness(0.35); animation: none; }
 
 /* Monstars return to their original colours when playing */
-.monster.active {
-  filter: brightness(1);
-  animation: monsterSquish 1.4s ease-in-out infinite;
-}
+.monster.active { filter: brightness(1); animation: monsterSquish 1.4s ease-in-out infinite; }
 
-/* paused Monstars stay on the stage */
-.monster.paused {
-  filter: brightness(0.55);
-  animation: none;
-}
+/* Paused Monstars stay on the stage */
+.monster.paused { filter: brightness(0.55); animation: none; }
 
-/* bottom step has a gentle animation */
-.monster.active[data-step="bottom"] {
-  animation-duration: 2s;
-}
+/* 120 BPM: 0.5 seconds per beat. Each step uses 1, 2, or 4 beats. */
+.monster.active[data-step="bottom"] { animation-duration: 2s; }
+.monster.active[data-step="middle"] { animation-duration: 1s; }
+.monster.active[data-step="top"] { animation-duration: 0.5s; }
 
-/* middle step has the normal animation */
-.monster.active[data-step="middle"] {
-  animation-duration: 1.4s;
-}
+/* Distinct movement personalities. All cycles return to their starting pose. */
+.monster.bunny.active { animation-name: bunnyBeat; }
+.monster.drummer.active { animation-name: drummerBeat; }
+.monster.duckler.active { animation-name: ducklerBeat; }
+.monster.guitar.active { animation-name: guitarBeat; }
+.monster.monking.active { animation-name: monkingBeat; }
 
-/* top step has a faster animation */
-.monster.active[data-step="top"] {
-  animation-duration: 0.8s;
+@keyframes bunnyBeat {
+  0%, 100% { transform: translateY(0) scaleX(1) scaleY(1); }
+  18% { transform: translateY(2px) scaleX(1.08) scaleY(0.92); }
+  48% { transform: translateY(-12px) scaleX(0.96) scaleY(1.05); }
+  76% { transform: translateY(-3px) scaleX(1.02) scaleY(0.98); }
 }
-
-/* reduces animation for users who prefer less motion */
-@media (prefers-reduced-motion: reduce) {
-  .monster {
-    animation: none !important;
-    transition: none;
-  }
+@keyframes drummerBeat {
+  0%, 100% { transform: translateY(0) scaleX(1) scaleY(1); }
+  14% { transform: translateY(3px) scaleX(1.09) scaleY(0.9); }
+  40% { transform: translateY(-7px) scaleX(0.96) scaleY(1.06); }
+  75% { transform: translateY(0) scaleX(1.03) scaleY(0.98); }
+}
+@keyframes ducklerBeat {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  25% { transform: rotate(-7deg) translateY(-3px); }
+  50% { transform: rotate(0deg) translateY(1px); }
+  75% { transform: rotate(7deg) translateY(-3px); }
+}
+@keyframes guitarBeat {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-5deg) scale(1.03); }
+  50% { transform: rotate(0deg) scale(0.98); }
+  75% { transform: rotate(5deg) scale(1.03); }
+}
+@keyframes monkingBeat {
+  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+  25% { transform: translateY(-4px) rotate(-3deg) scale(1.02); }
+  50% { transform: translateY(1px) rotate(0deg) scale(0.98); }
+  75% { transform: translateY(-5px) rotate(3deg) scale(1.02); }
 }
 
 /* Three performance steps */
-
-.performance-steps {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
+.performance-steps { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .performance-step {
   position: absolute;
   left: 20%;
   width: 60%;
   height: 10%;
-
   background-color: #f6d56b;
   border: 3px solid #c79d41;
   border-radius: 12px;
@@ -247,67 +132,131 @@ header h1 {
 /* Three-step performance stage */
 .performance-stairs {
   position: absolute;
-
   left: 0;
   bottom: -20%;
   top: auto;
-
   width: 100%;
   height: 85%;
-
   object-fit: fill;
-
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
-
   z-index: 1;
 }
 
-/* Initial welcome popup */
+/* Visual feedback for staircase drop zones */
+.step-drop-glow {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  height: 5%;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255,251,177,.75) 0%, rgba(255,231,91,.4) 42%, rgba(255,220,80,0) 78%);
+  opacity: 0;
+  transform: translateY(-50%) scale(.88);
+  transition: opacity .18s ease, transform .18s ease;
+  filter: blur(9px);
+}
+.step-drop-glow--top { top: 58.5%; }
+.step-drop-glow--middle { top: 72%; }
+.step-drop-glow--bottom { top: 90.5%; }
+.step-drop-glow.is-highlighted { opacity: 1; transform: translateY(-50%) scale(1); }
 
+/* Floating musical notes on successful placement */
+.musical-note-burst {
+  position: absolute;
+  z-index: 50;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+}
+.musical-burst-note {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: clamp(20px, 2.5vw, 38px);
+  line-height: 1;
+  opacity: 0;
+  text-shadow: 0 2px 0 rgba(70,20,90,.22), 0 0 10px rgba(255,255,255,.4);
+  animation: musicalNoteFloat .9s ease-out forwards;
+}
+@keyframes musicalNoteFloat {
+  0% { opacity: 0; transform: translate(0,10px) scale(.5) rotate(-12deg); }
+  20% { opacity: 1; transform: translate(calc(var(--note-x) * .3),calc(var(--note-y) * .3)) scale(1.15) rotate(5deg); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--note-x),var(--note-y)) scale(.85) rotate(15deg); }
+}
+
+/* Global playback controls */
+.stage-controls {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 100;
+}
+.stage-control-button {
+  min-width: 125px;
+  min-height: 50px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+.pause-all-button { background: #20dc36; color: #087d20; box-shadow: 0 5px 0 rgba(0,130,20,.25); }
+.pause-all-button:hover { background: #ff9f43; color: #fff; transform: translateY(-2px); }
+.pause-all-button:active { transform: translateY(2px); }
+.reset-button { background: #ffe572; color: #b28b0d; box-shadow: 0 5px 0 rgba(130,95,0,.25); }
+.reset-button:hover { background: #ff9f43; color: #fff; transform: translateY(-2px); }
+.reset-button:active { transform: translateY(2px); }
+.stage-control-button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+/* Smaller screen playback controls */
+@media (max-width: 600px) {
+  .stage-controls { top: 15px; right: 15px; gap: 8px; }
+  .stage-control-button { min-width: 90px; min-height: 44px; padding: 8px 10px; font-size: 14px; }
+}
+
+/* Initial welcome popup */
 .welcome-overlay {
   position: fixed;
   inset: 0;
   z-index: 2000;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 20px;
-  background: rgba(20, 10, 45, 0.55);
+  background: rgba(20,10,45,.55);
 }
-
-.welcome-overlay.hidden {
-  display: none;
-}
-
+.welcome-overlay.hidden { display: none; }
 .welcome-popup {
-  width: min(665px, 100%);
+  width: min(665px,100%);
   max-height: calc(100vh - 40px);
   overflow-y: auto;
-
   padding: 42px 28px 35px;
-
   background: #ffe572;
   border: 3px solid #259cff;
   border-radius: 14px;
-
   text-align: center;
-
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 35px rgba(0,0,0,.2);
 }
-
 .welcome-title {
   margin: 0 0 35px;
-
   font-family: 'Luckiest Guy', cursive;
-  font-size: clamp(25px, 4vw, 40px);
+  font-size: clamp(25px,4vw,40px);
   font-weight: 400;
   letter-spacing: -3px;
 }
-
 .welcome-title span:nth-child(1) { color: #ff7469; }
 .welcome-title span:nth-child(2) { color: #81c8b0; }
 .welcome-title span:nth-child(3) { color: #c88bd9; }
@@ -316,88 +265,44 @@ header h1 {
 .welcome-title span:nth-child(6) { color: #ef9072; }
 .welcome-title span:nth-child(7) { color: #d4a0b6; }
 .welcome-title span:nth-child(8) { color: #9e92d6; }
-
-.welcome-instructions {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-
-  margin-bottom: 34px;
-}
-
+.welcome-instructions { display: flex; flex-direction: column; gap: 22px; margin-bottom: 34px; }
 .welcome-instructions p {
   margin: 0;
-
   color: #B28B0D;
   font-family: 'Luckiest Guy', cursive;
-  font-size: clamp(12px, 1.4vw, 24px);
+  font-size: clamp(12px,1.4vw,24px);
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: -.01em;
   line-height: 1.5;
 }
-
 .play-button {
   width: 195px;
   max-width: 100%;
   min-height: 60px;
-
   border: none;
   border-radius: 10px;
-
   background: #20dc36;
   color: #087d20;
-
   font-family: 'Luckiest Guy', cursive;
   font-size: 28px;
   font-weight: 400;
-
   cursor: pointer;
-
-  box-shadow: 0 5px 0 rgba(0, 130, 20, 0.25);
-
-  transition:
-    transform 0.15s ease,
-    background 0.15s ease,
-    color 0.15s ease;
+  box-shadow: 0 5px 0 rgba(0,130,20,.25);
+  transition: transform .15s ease, background .15s ease, color .15s ease;
 }
-
-.play-button:hover {
-  background: #ff9f43;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.play-button:active {
-  transform: translateY(2px);
-}
-
-.play-button:focus-visible {
-  outline: 3px solid #126ed0;
-  outline-offset: 4px;
-}
-
+.play-button:hover { background: #ff9f43; color: #fff; transform: translateY(-2px); }
+.play-button:active { transform: translateY(2px); }
+.play-button:focus-visible { outline: 3px solid #126ed0; outline-offset: 4px; }
 @media (max-width: 600px) {
-  .welcome-popup {
-    padding: 30px 16px;
-  }
-
-  .welcome-instructions {
-    gap: 16px;
-    margin-bottom: 25px;
-  }
-
-  .welcome-title {
-    margin-bottom: 25px;
-    letter-spacing: -2px;
-  }
-
-  .play-button {
-    min-height: 54px;
-  }
+  .welcome-popup { padding: 30px 16px; }
+  .welcome-instructions { gap: 16px; margin-bottom: 25px; }
+  .welcome-title { margin-bottom: 25px; letter-spacing: -2px; }
+  .play-button { min-height: 54px; }
 }
 
+/* Motion accessibility */
 @media (prefers-reduced-motion: reduce) {
-  .play-button {
-    transition: none;
-  }
+  .monster { animation: none !important; transition: none; }
+  .play-button, .stage-control-button, .step-drop-glow { transition: none; }
+  .musical-burst-note { animation: none; opacity: 1; transform: translateY(-18px); }
 }
