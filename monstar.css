@@ -30,7 +30,7 @@ header h1 { margin: 0; color: white; }
 }
 .monster:active { cursor: grabbing; }
 
-/* Starting positions (original Figma values retained) */
+/* Starting positions these are original Figma values that were retained */
 .guitar { width: 15%; left: 8%; top: 47%; }
 .duckler { width: 13%; left: 24%; top: 46%; }
 .bunny { width: 13%; left: 44%; top: 25%; }
@@ -45,7 +45,8 @@ header h1 { margin: 0; color: white; }
   -webkit-user-drag: none;
   touch-action: none;
   z-index: 10;
-  /* Idle animation, overridden by the active character's beat-driven movement */
+
+  /* Activation of idle animation, overridden by the active characters beat synced movement */
   animation: monsterSquish 1.4s ease-in-out infinite;
   transform-origin: bottom center;
 }
@@ -58,28 +59,28 @@ header h1 { margin: 0; color: white; }
   100% { transform: scaleX(1) scaleY(1); }
 }
 
-/* Starting positions */
+/* Monstars starting positions */
 .guitar { width: 10%; left: 8%; top: auto; bottom: 3%; }
 .duckler { width: 9%; left: 24%; top: auto; bottom: 2.5%; }
 .bunny { width: 9%; left: 44%; top: auto; bottom: 5%; }
 .drummer { width: 12%; left: 62%; top: auto; bottom: 5%; }
 .monking { width: 9%; left: 80%; top: auto; bottom: 5%; }
 
-/* Monstars are darkened before they join the orchestra */
+/* Monstars have a dark tint before they join the orchestra */
 .monster.inactive { filter: brightness(0.35); animation: none; }
 
-/* Monstars return to their original colours when playing */
+/* Monstars return to their original colours when activated. */
 .monster.active { filter: brightness(1); animation: monsterSquish 1.4s ease-in-out infinite; }
 
-/* Paused Monstars stay on the stage */
+/* Paused Monstars stay on the stage - return to dark tinted state. */
 .monster.paused { filter: brightness(0.55); animation: none; }
 
-/* 120 BPM: 0.5 seconds per beat. Each step uses 1, 2, or 4 beats. */
+/* Each sample for the Monstars were design to have a BPM of 120 - 0.5 seconds per beat. Each step uses 1, 2, or 4 beats. I had changed the samples of each Monstars so that it would sound more cohesive and pleasant. */
 .monster.active[data-step="bottom"] { animation-duration: 2s; }
 .monster.active[data-step="middle"] { animation-duration: 1s; }
 .monster.active[data-step="top"] { animation-duration: 0.5s; }
 
-/* Distinct movement personalities. All cycles return to their starting pose. */
+/* Creating distinct quirky movement personalities. All cycles return to their starting pose. */
 .monster.bunny.active { animation-name: bunnyBeat; }
 .monster.drummer.active { animation-name: drummerBeat; }
 .monster.duckler.active { animation-name: ducklerBeat; }
@@ -117,7 +118,7 @@ header h1 { margin: 0; color: white; }
   75% { transform: translateY(-5px) rotate(3deg) scale(1.02); }
 }
 
-/* Three performance steps */
+/* Three level performance steps */
 .performance-steps { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .performance-step {
   position: absolute;
@@ -129,7 +130,7 @@ header h1 { margin: 0; color: white; }
   border-radius: 12px;
 }
 
-/* Three-step performance stage */
+/* This is the Monstars performance stage */
 .performance-stairs {
   position: absolute;
   left: 0;
@@ -144,7 +145,7 @@ header h1 { margin: 0; color: white; }
   z-index: 1;
 }
 
-/* Visual feedback for staircase drop zones */
+/* I created a visual feedback glowing effect for the staircase stepes for each level. */
 .step-drop-glow {
   position: absolute;
   left: 20%;
@@ -164,7 +165,7 @@ header h1 { margin: 0; color: white; }
 .step-drop-glow--bottom { top: 90.5%; }
 .step-drop-glow.is-highlighted { opacity: 1; transform: translateY(-50%) scale(1); }
 
-/* Floating musical notes on successful placement */
+/* Floating musical notes emonate from Monstars upon placment */
 .musical-note-burst {
   position: absolute;
   z-index: 50;
@@ -221,13 +222,13 @@ header h1 { margin: 0; color: white; }
 .reset-button:active { transform: translateY(2px); }
 .stage-control-button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 
-/* Smaller screen playback controls */
+/* Small screen playback controls */
 @media (max-width: 600px) {
   .stage-controls { top: 15px; right: 15px; gap: 8px; }
   .stage-control-button { min-width: 90px; min-height: 44px; padding: 8px 10px; font-size: 14px; }
 }
 
-/* Initial welcome popup */
+/* Initial Monstars popup */
 .welcome-overlay {
   position: fixed;
   inset: 0;
@@ -300,9 +301,132 @@ header h1 { margin: 0; color: white; }
   .play-button { min-height: 54px; }
 }
 
-/* Motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   .monster { animation: none !important; transition: none; }
   .play-button, .stage-control-button, .step-drop-glow { transition: none; }
   .musical-burst-note { animation: none; opacity: 1; transform: translateY(-18px); }
+}
+
+/* Responsive stage layou, this ensures that it preserves the three-step performance scene. */
+@media (min-width: 1601px) {
+  .monster { max-width: 190px; }
+  .stage-controls { top: clamp(25px, 2vw, 42px); right: clamp(30px, 2.5vw, 56px); }
+}
+
+@media (min-width: 840px) and (max-width: 1199px) {
+  .guitar { width: 11%; left: 7%; }
+  .duckler { width: 10%; left: 24%; }
+  .bunny { width: 10%; left: 43%; }
+  .drummer { width: 13%; left: 60%; }
+  .monking { width: 10%; left: 79%; }
+  .stage-controls { top: 18px; right: 20px; gap: 10px; }
+  .stage-control-button { min-width: 108px; min-height: 46px; font-size: 16px; }
+}
+
+@media (max-width: 839px) {
+  html, body { height: auto; min-height: 100%; overflow-x: hidden; overflow-y: auto; }
+  .monster-stage { width: 100%; height: max(100dvh, 560px); min-height: 560px; }
+  .monster { min-width: 46px; max-width: 95px; }
+  .guitar { width: 11%; left: 2%; bottom: 3%; }
+  .duckler { width: 11%; left: 22%; bottom: 2.5%; }
+  .bunny { width: 11%; left: 42%; bottom: 5%; }
+  .drummer { width: 13%; left: 61%; bottom: 5%; }
+  .monking { width: 11%; left: 81%; bottom: 5%; }
+  .stage-controls { top: 12px; right: 12px; gap: 8px; }
+  .stage-control-button { min-width: 90px; min-height: 44px; padding: 8px 10px; font-size: 14px; }
+  .welcome-overlay { padding: 12px; }
+  .welcome-popup { width: min(600px, 100%); max-height: calc(100dvh - 24px); padding: 25px 18px; }
+  .welcome-title { margin-bottom: 22px; }
+  .welcome-instructions { gap: 12px; margin-bottom: 20px; }
+  .welcome-instructions p { font-size: clamp(13px, 2.8vw, 19px); }
+}
+
+@media (max-width: 420px) {
+  .monster { min-width: 42px; }
+  .guitar { left: 1%; }
+  .duckler { left: 21%; }
+  .bunny { left: 41%; }
+  .drummer { left: 60%; }
+  .monking { left: 80%; }
+  .stage-control-button { min-width: 82px; font-size: 12px; }
+  .musical-burst-note { font-size: 20px; }
+}
+
+@media (max-height: 500px) and (min-width: 840px) {
+  .welcome-popup { padding: 16px 24px; }
+  .welcome-title { margin-bottom: 10px; }
+  .welcome-instructions { gap: 5px; margin-bottom: 12px; }
+  .welcome-instructions p { font-size: 14px; }
+  .play-button { min-height: 44px; }
+}
+
+/* 
+   These adjustments do not change the staircase geometry,
+   character step positions or audio-related animations.
+   */
+
+/* I had issues with touch interaction and so I tweaked it along with avoiding accidental text selection. */
+.stage-control-button,
+.play-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Keep the welcome text readable at typical laptop widths. */
+@media (min-width: 840px) and (max-width: 1199px) {
+  .welcome-instructions p {
+    font-size: clamp(16px, 1.8vw, 20px);
+  }
+}
+
+/* Medium screens -refine controls and welcome typography. */
+@media (min-width: 601px) and (max-width: 839px) {
+  .stage-controls {
+    top: 12px;
+    right: 12px;
+    gap: 8px;
+  }
+
+  .stage-control-button {
+    min-width: 92px;
+    min-height: 44px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .welcome-instructions p {
+    font-size: clamp(15px, 2.4vw, 19px);
+  }
+}
+
+/* This is for narrower screen, it should be able retain usable controls and readable text. */
+@media (max-width: 600px) {
+  .stage-controls {
+    gap: 8px;
+  }
+
+  .stage-control-button {
+    min-height: 44px;
+  }
+
+  .welcome-instructions p {
+    font-size: clamp(14px, 3.2vw, 18px);
+    line-height: 1.4;
+  }
+
+  .welcome-title {
+    font-size: clamp(25px, 6vw, 36px);
+  }
+}
+
+.stage-control-button:focus-visible,
+.play-button:focus-visible {
+  outline-offset: 4px;
+}
+
+@media (hover: none) {
+  .stage-control-button:hover,
+  .play-button:hover {
+    transform: none;
+  }
 }
